@@ -686,6 +686,8 @@ class MarshmallowInputSchema(Type):
                 )
             except ValidationError as e:
                 errors = e.messages
+            except ValueError as e:
+                errors = [str(e)]
 
         if errors:
             raise InvalidTypeData(
@@ -727,6 +729,8 @@ class MarshmallowReturnSchema(Type):
                 value = self.schema.dump(value)
             except ValidationError as e:
                 errors = e.messages
+            except ValueError as e:
+                errors = [str(e)]
 
         if errors:
             raise InvalidTypeData(
