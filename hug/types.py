@@ -668,7 +668,7 @@ class MarshmallowInputSchema(Type):
     def __doc__(self):
         return self.schema.__doc__ or self.schema.__class__.__name__
 
-    def __call__(self, value, context):
+    def __call__(self, value, context=None):
         self.schema.context = context
         # In marshmallow 2 schemas return tuple (`data`, `errors`) upon loading. They might also raise on invalid data
         # if configured so, but will still return a tuple.
